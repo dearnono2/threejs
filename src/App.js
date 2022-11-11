@@ -16,23 +16,20 @@ function App() {
 			<Canvas
 				shadowMap
 				style={{ background: '#333' }}
-				// 카메라 포지션(앵글)
 				camera={{ position: [1, 2, 5] }}>
-				{/* 축 그래프 모양 */}
 				<axesHelper args={[6]} />
 				<Orbit />
 
 				<ambientLight intensity={0.2} />
 
-				{/* 드래그하고 싶은 요소를 Dragable컴포넌트로 감싸줌 */}
 				<Dragable>
 					<Bulb position={[0, 3, 0]} />
 				</Dragable>
 
 				<Suspense fallback={null}>
 					<Model
-						path={`${process.env.PUBLIC_URL}/puppy/scene.gltf`}
-						scale={new Array(3).fill(3)}
+						path={`${process.env.PUBLIC_URL}/pony/scene.gltf`}
+						scale={new Array(3).fill(1)}
 						position={[0, 0, 0]}
 						rotation-y={0}
 					/>
