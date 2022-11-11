@@ -10,7 +10,7 @@ const Model = (props) => {
       Object.values(nodes).forEach(
         (obj) =>
           obj.isMesh &&
-          Object.assign(obj, { castShadow: true })
+          Object.assign(obj, { castShadow: true, receiveShadow: true })
       ),
     [nodes]
   );
