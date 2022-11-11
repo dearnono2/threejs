@@ -2,12 +2,11 @@ import './scss/style.scss';
 import { Canvas } from 'react-three-fiber';
 import { Suspense } from 'react';
 import Orbit from './components/Orbit';
-import Box from './components/Box';
-import Floor from './components/Floor';
 import Bulb from './components/Bulb';
 import ColorPicker from './components/ColorPicker';
 import Dragable from './components/Dragable';
 import Model from './components/Model';
+import Floor from './components/Floor';
 
 function App() {
 
@@ -16,8 +15,10 @@ function App() {
 			<ColorPicker />
 			<Canvas
 				shadowMap
-				style={{ background: '#111' }}
-				camera={{ position: [3, 5, 3] }}>
+				style={{ background: '#333' }}
+				// 카메라 포지션(앵글)
+				camera={{ position: [1, 2, 5] }}>
+				{/* 축 그래프 모양 */}
 				<axesHelper args={[6]} />
 				<Orbit />
 
@@ -29,9 +30,14 @@ function App() {
 				</Dragable>
 
 				<Suspense fallback={null}>
-					<Model path={`${process.env.PUBLIC_URL}/house/scene.gltf`} />
+					<Model
+						path={`${process.env.PUBLIC_URL}/puppy/scene.gltf`}
+						scale={new Array(3).fill(3)}
+						position={[0, 0, 0]}
+						rotation-y={0}
+					/>
 				</Suspense>
-
+				<Floor position={[0, -4, 0]} />
 			</Canvas>
 		</figure>
 	);
