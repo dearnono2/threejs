@@ -1,14 +1,23 @@
 import { useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useMemo } from 'react';
 
 const Model = (props) => {
-  const model = useLoader(GLTFLoader, props.path);
+  const { nodes, scene } = useLoader(GLTFLoader, props.path);
+
+  useMemo(
+    () =>
+      Object.values(nodes).forEach(
+        (obj) =>
+          obj.isMesh &&
+          Object.assign(obj, { castShadow: true })
+      ),
+    [nodes]
+  );
+
   return <primitive
-    object={model.scene}
+    object={scene}
     {...props}
-  //scale={new Array(3).fill(1)}
-  //position={[0, 0, 0]}
-  //rotation-y={0}
   />
 }
 
